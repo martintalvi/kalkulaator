@@ -1,4 +1,4 @@
-class cal():                            
+class Cal:
     def __init__(self,a,b):             
         self.a = a
         self.b = b
@@ -9,22 +9,37 @@ class cal():
         return self.a - self.b
     def korrutamine(self):              
         return self.a * self.b
-    def jagamine(self):                 
+    def jagamine(self):
+        if self.b == 0:
+            return "Jagamine nulliga pole lubatud!"
         return self.a / self.b
-    def jaak(self):                     
+    def jaak(self):
+        if self.b == 0:
+            return "Jagamine nulliga pole lubatud!"
         return self.a % self.b
-    def ruutjuur(self):                 
+    def juur(self):
+        if self.a < 0 and self.b % 2 == 0:
+            return "Paarisarvulist juurt negatiivsest arvust ei saa leida!"
+        return self.a ** (1 / self.b)
+    def astendamine(self):
         return self.a ** self.b
-a = int(input("Sisesta esimene number: "))          
-b = int(input("Sisesta teine number: "))
+    def keskmine(self):
+        return (self.a + self.b)/2
 
-kalk = cal(a,b)                         
+a = float(input("Sisesta esimene number: "))
+b = float(input("Sisesta teine number: "))
+
+kalk = Cal(a,b)
+
 while True:
     def menu():
-        x = ('1. Liitmine \n2. lahutamine\n3. korrutamine\n4. jagamine\n5. Jäägi leidmine\n6. Ruutjuure leidmine. ')
+        x = '0. Lõpeta\n1. Liitmine\n2. Lahutamine\n3. Korrutamine\n4. Jagamine\n5. Jäägi leidmine\n6. Juure leidmine\n7. Astendamine\n8. Keskmise leidmine'
         print(x)
     menu()
     valik = int(input('Sisesta üks valikutest: '))
+    if valik == 0:
+        print("Lõpetatud")
+        break
     if valik == 1:
         print("Vastus: ",kalk.liitmine())
         break
@@ -41,11 +56,16 @@ while True:
         print("Vastus: ",kalk.jaak())
         break
     elif valik == 6:
-        print("Vastus: ",kalk.ruutjuur())
+        print("Vastus: ",kalk.juur())
         break
-    elif valik == 0:
-        print('Sisesta uuesti üks liitmise operaator')
+    elif valik == 7:
+        print("Vastus: ", kalk.astendamine())
         break
+    elif valik == 8:
+        print("Vastus: ", kalk.keskmine())
+        break
+    else:
+        print('\nSellist valikut pole! Vali üks number 0st 8ni.')
 
 
 
